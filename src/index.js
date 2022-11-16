@@ -3,6 +3,7 @@ import express  from 'express'
 import { dirname , join} from "path";
 import { fileURLToPath } from "url";
 import indexRoute from './routes/index.js';
+import { PORT } from "./config/config.js";
 
 
 const app= express();
@@ -18,7 +19,8 @@ app.use(express.static(join(__dirname, "public")));
 
 
 
-app.listen(3000)
-console.log("Server is listening on port", 3000)
+
+app.listen(PORT)
+console.log("serve on port ", PORT)
 
 

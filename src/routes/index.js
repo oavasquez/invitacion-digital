@@ -13,10 +13,12 @@ router.get('/', (req, res) => {
         res.render('nofound', { title: 'Invitacion Boda Vasquez Acosta' })
     } else {
 
-        const result = pool.query(`CALL invitacion_digitalDB.sp_invitados(2 ,'` + req.query['invitado'] + `','');`, function (error, results) {
+        const result = pool.query(`CALL sp_invitados(2 ,'` + req.query['invitado'] + `','');`, function (error, results) {
             if (error) {
                 res.render('nofound', { title: 'Invitacion Boda Vasquez Acosta' })
             }
+
+            console.log(results)
             var resultado = Object.assign({}, results[0]);
             if (results[0].length == 0) {
                 res.render('nofound', { title: 'Invitacion Boda Vasquez Acosta' })
@@ -31,7 +33,7 @@ router.get('/', (req, res) => {
 
 router.get('/confirmation', (req, res) => {
 
-    const result = pool.query(`CALL invitacion_digitalDB.sp_invitados(1 ,'` + req.query['respuesta'] + `','` + req.query['invitado'] + `');`, function (error, results) {
+    const result = pool.query(`CALL sp_invitados(1 ,'` + req.query['respuesta'] + `','` + req.query['invitado'] + `');`, function (error, results) {
         if (error) throw console.log(error);
         var resultado = Object.assign({}, results[0]);
         if (results[0].length==0) {
@@ -46,7 +48,7 @@ router.get('/confirmation', (req, res) => {
 
 router.get('/listconfirmation', (req, res) => {
 
-    const result = pool.query(`CALL invitacion_digitalDB.sp_invitados(3 ,'password1','' );`, function (error, results) {
+    const result = pool.query(`CALL sp_invitados(3 ,'password1','' );`, function (error, results) {
 
         if (error) throw console.log(error);
         var resultado = Object.assign({}, results);

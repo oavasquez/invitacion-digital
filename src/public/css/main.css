@@ -53,3 +53,16 @@ pre {
     font-weight: 400;
     line-height: 18.5714px;
 }
+
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #3E734C !important;
+    border-color:  #3E734C !important;
+}
+
+
+#number-person {
+
+    color: red;
+    
+}
